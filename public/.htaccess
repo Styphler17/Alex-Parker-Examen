@@ -1,1 +1,4 @@
-# public .htaccess - placeholder
+RewriteEngine On
+RewriteCond %{REQUEST_URI} !\.(js|css|jpg|gif|zip|png|pdf|woff|woff2|eot|ttf|svg|ico)$ [NC]
+RewriteRule ^(.*)$ index.php [L]
+
