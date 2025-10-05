@@ -1,0 +1,1 @@
+<!-- posts/index.php - placeholder -->

@@ -1,0 +1,2 @@
+<?php
+// postsModel.php - placeholder

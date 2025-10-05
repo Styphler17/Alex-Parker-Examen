@@ -1,0 +1,2 @@
+<?php
+// categoriesModel.php - placeholder

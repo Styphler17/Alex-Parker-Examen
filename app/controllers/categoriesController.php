@@ -1,0 +1,2 @@
+<?php
+// categoriesController.php - placeholder

@@ -1,0 +1,2 @@
+<?php
+// pagesController.php - placeholder
