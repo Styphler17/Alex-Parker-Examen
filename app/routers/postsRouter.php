@@ -5,7 +5,7 @@ require_once __DIR__ . '/../controllers/postsController.php';
 $action = $_GET['posts'] ?? 'home';
 
 switch ($action) {
-    case 'add': // show add form (professor used `add`)
+    case 'add': 
         \App\Controllers\PostsController\newAction($conn);
         break;
 
