@@ -7,7 +7,7 @@
             <div class="col-md-12 content-page">
                 <!-- Blog Post Start -->
                 <div class="sub-title">
-                    <a href="<?php echo BASE_URL; ?>" title="Go to Home Page">
+                    <a href="./" title="Go to Home Page">
                         <h2>Back Home</h2>
                     </a>
                     <a href="#comment" class="smoth-scroll"><i class="icon-bubbles"></i></a>
@@ -45,8 +45,8 @@
 
                         <!-- Post Buttons -->
                         <div>
-                            <a href="<?php echo BASE_URL; ?>posts/<?php echo $post['id']; ?>/<?php echo \Core\Helpers\slugify($post['title']); ?>/edit/form.html" type="button" class="btn btn-primary">Edit Post</a>
-                            <a href="<?php echo BASE_URL; ?>posts/<?php echo $post['id']; ?>/<?php echo \Core\Helpers\slugify($post['title']); ?>/delete.html" type="button" class="btn btn-secondary" role="button" onclick="return confirm('Are you sure?')">Delete Post</a>
+                            <a href="posts/<?php echo $post['id']; ?>/<?php echo \Core\Helpers\slugify($post['title']); ?>/edit/form.html" type="button" class="btn btn-primary">Edit Post</a>
+                            <a href="posts/<?php echo $post['id']; ?>/<?php echo \Core\Helpers\slugify($post['title']); ?>/delete.html" type="button" class="btn btn-secondary" role="button" onclick="return confirm('Are you sure?')">Delete Post</a>
                         </div>
                         <!-- Post Buttons End -->
                     </div>

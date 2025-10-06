@@ -27,45 +27,46 @@ BONUS:
 
 
 ROUTES
-	ROUTE PAR DEFAUT: liste des posts
-		PATTERN: /
-		CTRL: ???
-		ACTION: ???
-		TITLE: Alex Parker - Blog
+	ROUTES
+		ROUTE PAR DEFAUT: liste des posts
+			PATTERN: /
+			CTRL: App\Controllers\PagesController
+			ACTION: indexAction
+			TITLE: Alex Parker - Blog
 
-	ROUTE DU DETAIL D'UN POST
-			PATTERN: /posts/id/slug-du-post.html
-			URL: ???
-			CTRL: ???
-			ACTION: ???
+		ROUTE DU DETAIL D'UN POST
+			PATTERN: /posts/{id}/{slug}.html
+			URL (exemple): /posts/123/mon-post.html
+			CTRL: App\Controllers\PostsController
+			ACTION: showAction
 			TITLE: Alex Parker - Title du post
 
-	ROUTE D'AJOUT D'UN POST: affichage du formulaire
+		ROUTE D'AJOUT D'UN POST: affichage du formulaire
 			PATTERN: /posts/add/form.html
-			CTRL: ???
-			ACTION: ???
+			CTRL: App\Controllers\PostsController
+			ACTION: newAction
 			TITLE: Alex Parker - Add a post
 
-	ROUTE D'AJOUT D'UN POST: INSERT
+		ROUTE D'AJOUT D'UN POST: INSERT
 			PATTERN: /posts/add/insert.html
-			CTRL: ???
-			ACTION: ???
+			CTRL: App\Controllers\PostsController
+			ACTION: createAction
 			PAS DE TITLE CAR REDIRECTION VERS LA PAGE D'ACCUEIL
 
-	ROUTE DE MODIFICATION D'UN POST: Affichage du formulaire
-			PATTERN: /posts/id/slug-du-post/edit/form.html
-			CTRL: ???
-			ACTION: ???
+		ROUTE DE MODIFICATION D'UN POST: Affichage du formulaire
+			PATTERN: /posts/{id}/{slug}/edit/form.html
+			CTRL: App\Controllers\PostsController
+			ACTION: editAction
 			TITLE: Alex Parker - Edit a post
 
-	ROUTE DE MODIFICATION D'UN POST: UPDATE
-			PATTERN: /posts/id/slug-du-post/edit/update.html
-			CTRL: ???
-			ACTION: ???
+		ROUTE DE MODIFICATION D'UN POST: UPDATE
+			PATTERN: /posts/{id}/{slug}/edit/update.html
+			CTRL: App\Controllers\PostsController
+			ACTION: updateAction
 			PAS DE TITLE CAR REDIRECTION VERS LA PAGE DE DETAILS DU POST
 
-	ROUTE DE SUPPRESSION D'UN POST:
-			PATTERN: /posts/id/slug-du-post/delete.html
-			CTRL: ???
-			ACTION: ???
+		ROUTE DE SUPPRESSION D'UN POST:
+			PATTERN: /posts/{id}/{slug}/delete.html
+			CTRL: App\Controllers\PostsController
+			ACTION: deleteAction
 			PAS DE TITLE CAR REDIRECTION VERS LA PAGE D'ACCUEIL

@@ -1,3 +1,12 @@
 RewriteEngine On
+
+# Pretty URL rewrites
+RewriteRule ^posts/([0-9]+)/([^/]+)/edit/update\.html$ index.php?posts=update&id=$1 [L]
+RewriteRule ^posts/([0-9]+)/([^/]+)/edit/form\.html$ index.php?posts=edit&id=$1 [L]
+RewriteRule ^posts/([0-9]+)/([^/]+)/delete\.html$ index.php?posts=delete&id=$1 [L]
+RewriteRule ^posts/([0-9]+)/([^/]+)\.html$ index.php?posts=show&id=$1&slug=$2 [L]
+RewriteRule ^posts/add/insert\.html$ index.php?posts=insert [L]
+RewriteRule ^posts/add/form\.html$ index.php?posts=add [L]
+
 RewriteCond %{REQUEST_URI} !\.(js|css|jpg|gif|zip|png|pdf|woff|woff2|eot|ttf|svg|ico)$ [NC]
 RewriteRule ^(.*)$ index.php [L]

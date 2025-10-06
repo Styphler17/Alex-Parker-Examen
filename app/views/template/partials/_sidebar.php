@@ -1,10 +1,10 @@
 <div class="col-md-3">
     <div class="about-fixed">
         <div class="my-pic">
-            <a href="<?php echo BASE_URL; ?>"><img src="template/images/pic/my-pic.png" alt="" /></a>
+            <a href="./"><img src="template/images/pic/my-pic.png" alt="" /></a>
             <nav id="menu">
                 <ul class="menu-link">
-                    <li><a href="<?php echo BASE_URL; ?>">My blog</a></li>
+                    <li><a href="./">My blog</a></li>
                 </ul>
             </nav>
             <?php $cats = $categories ?? []; ?>

@@ -18,7 +18,6 @@ function excerpt(string $text, int $length = 150): string
     return truncate(strip_tags($text), $length);
 }
 
-
 function slugify(string $text): string
 {
     // Strip html tags

@@ -4,48 +4,55 @@ namespace App\Controllers\PostsController;
 
 use \PDO;
 
-function indexAction(PDO $conn)
+
+function indexAction(PDO $conn): void
 {
     include_once '../app/models/postsModel.php';
+    include_once '../app/models/categoriesModel.php';
     $posts = \App\Models\postsModel\findAllPosts($conn);
 
-    global $content, $title;
+    global $content, $title, $categories;
+    $categories = \App\Models\findCategoriesWithPostCount($conn);
+    foreach ($posts as &$post) {
+        $post['category'] = array_column($categories, 'name', 'id')[$post['category_id']] ?? '';
+    }
     $title = "Alex Parker - Blog";
     ob_start();
     include '../app/views/posts/index.php';
     $content = ob_get_clean();
 }
 
-function showAction(PDO $conn, int $id)
+
+function showAction(PDO $conn, int $id): void
 {
     include_once '../app/models/postsModel.php';
     include_once '../app/models/categoriesModel.php';
     $post = \App\Models\postsModel\findOneById($conn, $id);
 
-    // Get category name
-    $categories = \App\Models\findAllCategories($conn);
+    global $content, $title, $categories;
+    
+    $categories = \App\Models\findCategoriesWithPostCount($conn);
     $post['category'] = array_column($categories, 'name', 'id')[$post['category_id']] ?? '';
-
-    global $content, $title;
     $title = "Alex Parker - " . ($post['title'] ?? "Post");
     ob_start();
     include '../app/views/posts/show.php';
     $content = ob_get_clean();
 }
 
-function newAction(PDO $conn)
+function newAction(PDO $conn): void
 {
     include_once '../app/models/categoriesModel.php';
-    $categories = \App\Models\findAllCategories($conn);
 
-    global $content, $title;
+    global $content, $title, $categories;
+    
+    $categories = \App\Models\findCategoriesWithPostCount($conn);
     $title = "Alex Parker - Add a post";
     ob_start();
     include '../app/views/posts/new.php';
     $content = ob_get_clean();
 }
 
-function createAction(PDO $conn, array $data)
+function createAction(PDO $conn, array $data): void
 {
     $data['created_at'] = date('Y-m-d H:i:s');
 
@@ -54,7 +61,6 @@ function createAction(PDO $conn, array $data)
         $uploadDir = dirname(__DIR__, 2) . '/public/template/images/blog/';
         $uploadFile = $uploadDir . basename($_FILES['image_file']['name']);
 
-        // Create directory if it doesn't exist
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir, 0755, true);
         }
@@ -70,28 +76,28 @@ function createAction(PDO $conn, array $data)
     exit;
 }
 
-function editAction(PDO $conn, int $id)
+function editAction(PDO $conn, int $id): void
 {
     include_once '../app/models/postsModel.php';
     include_once '../app/models/categoriesModel.php';
     $post = \App\Models\postsModel\findOneById($conn, $id);
-    $categories = \App\Models\findAllCategories($conn);
-
-    global $content, $title;
+    
+    global $content, $title, $categories;
+    
+    $categories = \App\Models\findCategoriesWithPostCount($conn);
     $title = "Alex Parker - Edit a post";
     ob_start();
     include '../app/views/posts/edit.php';
     $content = ob_get_clean();
 }
 
-function updateAction(PDO $conn, int $id, array $data)
+function updateAction(PDO $conn, int $id, array $data): void
 {
     // Handle image upload
     if (!empty($_FILES['image_file']['name'])) {
         $uploadDir = dirname(__DIR__, 2) . '/public/template/images/blog/';
         $uploadFile = $uploadDir . basename($_FILES['image_file']['name']);
 
-        // Create directory if it doesn't exist
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir, 0755, true);
         }
@@ -108,7 +114,7 @@ function updateAction(PDO $conn, int $id, array $data)
     exit;
 }
 
-function deleteAction(PDO $conn, int $id)
+function deleteAction(PDO $conn, int $id): void
 {
     include_once '../app/models/postsModel.php';
     \App\Models\postsModel\postsDelete($conn, $id);
