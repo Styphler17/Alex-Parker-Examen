@@ -7,7 +7,7 @@
             </a>
         </div>
         <div class="post-info">
-            <span><?php echo date('Y-m-d', strtotime($post['created_at'])); ?></span> | <span><?php echo $post['category']; ?></span>
+            <span><?php echo date('F j, Y', strtotime($post['created_at'])); ?></span> | <span><?php echo $post['category']; ?></span>
         </div>
         <p><?php echo \Core\Helpers\excerpt($post['text']); ?></p>
         <a href="<?php echo BASE_URL; ?>posts/<?php echo $post['id']; ?>/<?php echo \Core\Helpers\slugify($post['title']); ?>.html" class="button button-style button-anim fa fa-long-arrow-right"><span>Read More</span></a>

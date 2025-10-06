@@ -1,6 +1,4 @@
-<?php include_once '../app/views/template/partials/_head.php'; ?>
-<?php include_once '../app/views/template/partials/_sidebar.php'; ?>
-
+ 
 <!-- Blog Post (Right Sidebar) Start -->
 <div class="col-md-9">
     <div class="col-md-12 page-body">
