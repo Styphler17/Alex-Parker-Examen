@@ -8,11 +8,6 @@
         <textarea class="form-control" id="text" name="text" rows="10" required></textarea>
     </div>
     <div class="form-group">
-        <label for="image">Image (filename)</label>
-        <input type="text" class="form-control" id="image" name="image" placeholder="e.g. 1.jpg">
-        <small class="form-text text-muted">Or upload an image file below.</small>
-    </div>
-    <div class="form-group">
         <label for="image_file">Upload Image</label>
         <input type="file" class="form-control" id="image_file" name="image_file" accept="image/*">
     </div>

@@ -29,7 +29,7 @@
 
                         <!-- Post Detail Start -->
                         <div class="post-info">
-                            <span><?php echo date('F j, Y', strtotime($post['created_at'])); ?></span> | <span><?php echo $post['category']; ?></span>
+                            <span><?php echo date('F j, Y', strtotime($post['created_at'])); ?></span>
                         </div>
                         <!-- Post Detail End -->
 

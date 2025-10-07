@@ -1,17 +1,17 @@
 <?php
 
-require_once __DIR__ . '/../controllers/postsController.php';
+require_once '../App/controllers/postsController.php';
 
-$action = $_GET['posts'] ?? 'home';
+$action = $_GET['posts'] ?? 'index';
+$id = (int)($_GET['id'] ?? 0);
+$slug = $_GET['slug'] ?? '';
 
 switch ($action) {
-    case 'add': 
+    case 'addform': 
         \App\Controllers\PostsController\newAction($conn);
         break;
 
     case 'show':
-        $id = (int)($_GET['id'] ?? 0);
-        $slug = $_GET['slug'] ?? '';
         \App\Controllers\PostsController\showAction($conn, $id);
         break;
 
@@ -19,22 +19,19 @@ switch ($action) {
         \App\Controllers\PostsController\createAction($conn, $_POST);
         break;
 
-    case 'edit':
-        $id = (int)($_GET['id'] ?? 0);
+    case 'editform':
         \App\Controllers\PostsController\editAction($conn, $id);
         break;
 
     case 'update':
-        $id = (int)($_GET['id'] ?? 0);
         \App\Controllers\PostsController\updateAction($conn, $id, $_POST);
         break;
 
     case 'delete':
-        $id = (int)($_GET['id'] ?? 0);
         \App\Controllers\PostsController\deleteAction($conn, $id);
         break;
 
-    case 'home':
+    case 'index':
     default:
         \App\Controllers\PostsController\indexAction($conn);
         break;

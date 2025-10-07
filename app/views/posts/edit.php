@@ -17,12 +17,11 @@
                             <textarea class="form-control" id="text" name="text" rows="10" required><?php echo $post['text']; ?></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="image">Image (filename)</label>
-                            <input type="text" class="form-control" id="image" name="image" value="<?php echo $post['image'] ?? ''; ?>" placeholder="e.g. 1.jpg">
-                        </div>
-                        <div class="form-group">
                             <label for="image_file">Upload New Image</label>
                             <input type="file" class="form-control" id="image_file" name="image_file" accept="image/*">
+                            <?php if (!empty($post['image'])): ?>
+                                <small class="form-text text-muted">Current image: <?php echo $post['image']; ?></small>
+                            <?php endif; ?>
                         </div>
                         <div class="form-group">
                             <label for="category_id">Category</label>

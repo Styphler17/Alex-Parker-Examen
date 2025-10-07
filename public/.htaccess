@@ -1,11 +1,40 @@
 RewriteEngine On
 
-RewriteRule ^posts/([0-9]+)/([^/]+)/edit/update\.html$ index.php?posts=update&id=$1 [L]
-RewriteRule ^posts/([0-9]+)/([^/]+)/edit/form\.html$ index.php?posts=edit&id=$1 [L]
-RewriteRule ^posts/([0-9]+)/([^/]+)/delete\.html$ index.php?posts=delete&id=$1 [L]
-RewriteRule ^posts/([0-9]+)/([^/]+)\.html$ index.php?posts=show&id=$1&slug=$2 [L]
-RewriteRule ^posts/add/insert\.html$ index.php?posts=insert [L]
-RewriteRule ^posts/add/form\.html$ index.php?posts=add [L]
+# Route par défaut : liste des posts (page principale)
+# URL: /
+# PATTERN: ?posts=index
+RewriteRule ^$ index.php?posts=index [L]
 
+# posts.show
+# URL: posts/id/slug.html
+# PATTERN: ?posts=show&id=x
+RewriteRule ^posts/([1-9][0-9]*)/([a-z0-9-]+)\.html$ index.php?posts=show&id=$1 [L]
+
+# posts.addform
+# URL: posts/add/form.html
+# PATTERN: ?posts=addform
+RewriteRule ^posts/add/form\.html$ index.php?posts=addform [L]
+
+# posts.insert
+# URL: posts/add/insert.html
+# PATTERN: ?posts=insert
+RewriteRule ^posts/add/insert\.html$ index.php?posts=insert [L]
+
+# posts.editform
+# URL: posts/id/slug/edit/form.html
+# PATTERN: ?posts=editform&id=x
+RewriteRule ^posts/([1-9][0-9]*)/([a-z0-9-]+)/edit/form\.html$ index.php?posts=editform&id=$1 [L]
+
+# posts.update
+# URL: posts/id/slug/edit/update.html
+# PATTERN: ?posts=update&id=x
+RewriteRule ^posts/([1-9][0-9]*)/([a-z0-9-]+)/edit/update\.html$ index.php?posts=update&id=$1 [L]
+
+# posts.delete
+# URL: posts/id/slug/delete.html
+# PATTERN: ?posts=delete&id=x
+RewriteRule ^posts/([1-9][0-9]*)/([a-z0-9-]+)/delete\.html$ index.php?posts=delete&id=$1 [L]
+
+# Exclude static files and pass everything else to index.php
 RewriteCond %{REQUEST_URI} !\.(js|css|jpg|gif|zip|png|pdf|woff|woff2|eot|ttf|svg|ico)$ [NC]
 RewriteRule ^(.*)$ index.php [L]
