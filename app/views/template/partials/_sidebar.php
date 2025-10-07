@@ -7,9 +7,8 @@
                     <li><a href="./">My blog</a></li>
                 </ul>
             </nav>
-            <?php $cats = $categories ?? []; ?>
             <ul class="menu-link">
-                <?php foreach ($cats as $category): ?>
+                <?php foreach ($categories as $category): ?>
                     <li>
                         <a href="#"><?php echo $category['name']; ?>
                             <?php if (isset($category['total'])): ?>[<?php echo (int)$category['total']; ?>]<?php endif; ?>
